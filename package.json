@@ -1,0 +1,43 @@
+{
+  "name": "sb-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node tools/build.js",
+    "dev": "concurrently -k -r -s first \"npm run open:src\" \"npm run lint:watch\"",
+    "lint": "esw src/components src/pages src/utils --color",
+    "lint:watch": "npm run lint -- --watch",
+    "open:src": "node tools/srcServer.js",
+    "precommit": "npm run lint",
+    "server": "node tools/srcServer.js",
+    "start": "node tools/distServer.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^6.4.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/eslint-parser": "^7.16.3",
+    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-react": "^7.16.0",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.3",
+    "chalk": "^4.1.2",
+    "eslint": "^7.32.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-react": "^7.27.1",
+    "eslint-plugin-sonarjs": "^0.10.0",
+    "eslint-watch": "^8.0.0",
+    "express": "^4.17.1",
+    "html-webpack-plugin": "^5.5.0",
+    "webpack": "^5.64.2",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-middleware": "^5.2.2",
+    "webpack-dev-server": "^4.5.0"
+  }
+}
