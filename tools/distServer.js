@@ -1,13 +1,11 @@
 const express = require('express');
 const path = require('path');
+const historyApiFallback = require('connect-history-api-fallback');
 
 const app = express();
 
+app.use(historyApiFallback());
 app.use(express.static(path.join(__dirname, '../dist')));
-
-// Tell express to use the webpack-dev-middleware and use the webpack.config.js
-// configuration file as a base.
-
 app.get('*', (req,res) =>{
   res.sendFile(path.join(__dirname, '../dist/index.html'));
 });

@@ -1,10 +1,13 @@
 const express = require('express');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
+const historyApiFallback = require('connect-history-api-fallback');
 
 const app = express();
 const config = require('../webpack.config');
 const compiler = webpack(config);
+
+app.use(historyApiFallback());
 
 // Tell express to use the webpack-dev-middleware and use the webpack.config.js
 // configuration file as a base.
@@ -22,9 +25,9 @@ app.use(
       reasons: false,
       children: false,
       source: true,
-      errors: false,
+      errors: true,
       errorDetails: false,
-      warnings: false,
+      warnings: true,
       publicPath: false
     }
   })
