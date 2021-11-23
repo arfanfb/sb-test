@@ -1,15 +1,17 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import pages from './pages';
 
-const App = () => {
+const App = ({ store, history }) => {
   return (
-    
-    <Routes>
-      <Route exact index path="/" element={pages.Home()} />
-      <Route exact path="notfound" element={pages.NotFound()} />
-      <Route path='*' element={pages.NotFound()} />
-    </Routes>
+    <Provider store={store}>
+      <Routes history={history}>
+        <Route exact index path="/" element={pages.Home()} />
+        <Route exact path="notfound" element={pages.NotFound()} />
+        <Route path='*' element={pages.NotFound()} />
+      </Routes>
+    </Provider>
   );
 };
 
