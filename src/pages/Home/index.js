@@ -24,6 +24,7 @@ const Home = (props) => {
 
   useEffect(() => {
     actions.setLoading(true);
+    actions.getTest();
   }, []);
 
   return (
