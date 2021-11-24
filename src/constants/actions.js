@@ -1,6 +1,8 @@
 const actions = {
   LOADING: 'LOADING',
-  MOVIES_FETCHED: 'MOVIES_FETCHED'
+  MOVIE_FETCHED: 'MOVIE_FETCHED',
+  MOVIES_FETCHED: 'MOVIES_FETCHED',
+  RESET: 'RESET',
 };
 
 export default actions;

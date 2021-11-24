@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`src/components/elements/CardMovies render 1`] = `
+<React.Fragment>
+  <div
+    className="   false false"
+  >
+    <span />
+    <Link
+      to=""
+    />
+  </div>
+</React.Fragment>
+`;
+
+exports[`src/components/elements/CardMovies render with props 1`] = `
+<React.Fragment>
+  <div
+    className="    false"
+  >
+    <span />
+    <Link
+      to=""
+    >
+      <section>
+        <Typography
+          tag="p"
+          variant="body-2"
+        >
+          Judul Movie
+        </Typography>
+        <div>
+          <Typography
+            tag="p"
+            variant="overline-1"
+          >
+            4
+          </Typography>
+        </div>
+      </section>
+    </Link>
+  </div>
+</React.Fragment>
+`;
+
+exports[`src/components/elements/CardMovies render without title 1`] = `
+<React.Fragment>
+  <div
+    className="   false false"
+  >
+    <span />
+    <Link
+      to=""
+    >
+      <section>
+        <Typography
+          tag="p"
+          variant="body-2"
+        >
+          Untitled
+        </Typography>
+        <div>
+          <Typography
+            tag="p"
+            variant="overline-1"
+          >
+            4
+          </Typography>
+        </div>
+      </section>
+    </Link>
+  </div>
+</React.Fragment>
+`;
+
+exports[`src/components/elements/CardMovies render without year 1`] = `
+<React.Fragment>
+  <div
+    className="    false"
+  >
+    <span />
+    <Link
+      to=""
+    >
+      <section>
+        <Typography
+          tag="p"
+          variant="body-2"
+        >
+          4
+        </Typography>
+        <div>
+          <span />
+        </div>
+      </section>
+    </Link>
+  </div>
+</React.Fragment>
+`;

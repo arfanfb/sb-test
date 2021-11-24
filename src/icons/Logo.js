@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Logo = (props) => {
-  const { height, width } = props;
+  const { className, height, width } = props;
 
   return (
-    <svg height={height} id="home_img" styles={{ height: `${height}px`, width: `${width}px` }}
+    <svg className={className} height={height} id="home_img" styles={{ height: `${height}px`, width: `${width}px` }}
       version="1.1" viewBox={`0 0 64 32`} width={width}
       xmlns="http://www.w3.org/2000/svg" >
       <g fill="#F5C518">
@@ -44,10 +44,12 @@ const Logo = (props) => {
 };
 
 Logo.defaultProps = {
+  className: {},
   height: 32,
   width: 64
 };
 Logo.propTypes = {
+  className: PropTypes.object,
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };

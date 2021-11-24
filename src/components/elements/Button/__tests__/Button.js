@@ -3,10 +3,6 @@ import ShallowRenderer from 'react-test-renderer/shallow';
 import { ArrowUp } from '../../../../icons';
 import Button from '../Button';
 
-jest.mock('react', () => ({
-  ...require.requireActual('react'),
-}));
-
 describe('src/components/button', () => {
   it('render', () => {
     const shallow = new ShallowRenderer();

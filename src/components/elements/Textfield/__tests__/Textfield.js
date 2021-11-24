@@ -2,10 +2,6 @@ import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
 import TextField from '../index';
 
-jest.mock('react', () => ({
-  ...require.requireActual('react'),
-}));
-
 describe('src/components/elements/textfield', () => {
   it('render', () => {
     const shallow = new ShallowRenderer();

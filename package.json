@@ -11,13 +11,18 @@
     "open:src": "node tools/srcServer.js",
     "precommit": "npm run lint",
     "server": "node tools/srcServer.js",
-    "start": "node tools/distServer.js"
+    "start": "node tools/distServer.js",
+    "test": "jest --passWithNoTests",
+    "test:cover": "npm run test -- --coverage "
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.24.0",
     "concurrently": "^6.4.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "raf": "^3.4.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
@@ -48,6 +53,7 @@
     "history": "^5.1.0",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^7.0.4",
+    "jest": "^27.3.1",
     "prop-types": "^15.7.2",
     "react-test-renderer": "^17.0.2",
     "redux-thunk": "^2.4.0",
@@ -64,5 +70,21 @@
     "hooks": {
       "pre-commit": "npm run lint"
     }
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tools/assetsTransformer.js",
+      "\\.(css|scss|less)$": "<rootDir>/tools/assetsTransformer.js"
+    },
+    "setupFiles": [
+      "raf/polyfill",
+      "./tools/enzymeTestAdapterSetup.js"
+    ],
+    "collectCoverageFrom": [
+      "src/components/**/*.js",
+      "src/pages/**/*.js",
+      "src/utils/**/*.js"
+    ],
+    "testURL": "http://localhost/"
   }
 }
