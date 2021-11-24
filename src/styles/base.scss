@@ -1,0 +1,26 @@
+@import './colors.scss';
+
+$color: (
+  primary: $primary,
+  secondary: $secondary,
+  font-color: $font-color,
+  alert: $alert,
+  alert-opacity: $alert-opacity,
+);
+
+$opacity: (
+  primary: $primary-opacity,
+  secondary: $secondary-opacity,
+);
+
+$border: 0.5px solid map-get($secondary, normal);
+$shadow: 0px 8px 16px rgba(0, 0, 0, 0.14);
+
+.list-reset {
+  list-style: none;
+  padding: 0;
+}
+
+.pointer {
+  cursor: pointer;
+}

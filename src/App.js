@@ -2,6 +2,9 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import pages from './pages';
+import 'typeface-roboto';
+import './styles/Global.module.scss';
+import './styles/base.scss';
 
 const App = ({ store, history }) => {
   return (

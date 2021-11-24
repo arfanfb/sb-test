@@ -3,7 +3,11 @@ import { ACTIONS } from '../../constants';
 
 export const initialState = {
   loading: false,
-  movies: []
+  moviesData: [],
+  moviesMeta: {
+    totalPage: 0,
+    page: 0
+  }
 };
 
 export const propTypes = {
@@ -12,7 +16,7 @@ export const propTypes = {
 };
 
 export default function reducer(state = initialState, action) {
-  const { type, loading, movies } = action;
+  const { type, loading, movies, page } = action;
 
   switch (type) {
     case ACTIONS.LOADING:
@@ -23,7 +27,14 @@ export default function reducer(state = initialState, action) {
     case ACTIONS.MOVIES_FETCHED:
       return {
         ...state,
-        movies
+        moviesData: [
+          ...state.moviesData,
+          ...movies.Search
+        ],
+        moviesMeta: {
+          totalPage: Math.round(movies.totalResults / 10),
+          page
+        }
       };
     default:
       return state;
