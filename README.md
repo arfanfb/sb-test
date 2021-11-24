@@ -23,6 +23,9 @@ Use the package manager [npm](https://www.npmjs.com/) to install this project.
 npm install
 ```
 
+## Setup Environtment
+Copy .env.example into .env with fully credential.
+
 ## Running
 
 ```bash
