@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const Home = (props) => {
   const { actions, loading } = props;
-  console.log('tes husky')
+
   useEffect(() => {
     actions.setLoading(true);
     actions.getTest();
