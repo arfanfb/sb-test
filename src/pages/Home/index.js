@@ -27,7 +27,7 @@ const Home = (props) => {
     actions.setLoading(true);
     actions.getTest();
   }, []);
-console.log('tes')
+
   return (
     <div className={styles.home}>
       <div>Home</div>
