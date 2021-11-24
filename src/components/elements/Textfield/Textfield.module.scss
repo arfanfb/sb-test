@@ -18,3 +18,29 @@
     outline-color: map-get($primary, normal);
   }
 }
+
+.textfield-wrapper {
+  position: relative;
+
+  span {
+    background: white;
+    border: 1px solid map-get($primary, normal);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    top: 100%;
+    padding: 10px 0;
+    position: absolute;
+    width: 100%;
+
+    label {
+      padding: 10px 5px;
+
+      &:hover {
+        background: map-get($primary, normal);
+        cursor: pointer;
+        color: white;
+      }
+    }
+  }
+}

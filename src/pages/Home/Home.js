@@ -41,7 +41,8 @@ const Home = (props) => {
       <>
         <span className={styles.search}>
           <Typography variant="body">Search by:</Typography>
-          <Textfield class-name={styles['textfield']} input={{ value: title }}
+          <Textfield autocomplete={['batman','spiderman']}
+            class-name={styles['textfield']} input={{ value: title }}
             onChange={(e) => { setTitle(e.target.value); }}
             placeholder="Movie title" width="300" />
           <Textfield class-name={styles['textfield']} onChange={(e) => { setYear(e.target.value); }}
