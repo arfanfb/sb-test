@@ -10,6 +10,33 @@ body {
   margin: 0;
 }
 
+.badge {
+  align-items: center;
+  background: black;
+  color: white;
+  display: flex;
+  height: 45px;
+  justify-content: center;
+  position: fixed;
+  margin-top: 45px;
+  right: -80px;
+  transform: rotate(45deg);
+  width: 300px;
+  z-index: 10;
+}
+
+.copyright {
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  position: fixed;
+  z-index: -1;
+
+  a {
+    color: inherit;
+  }
+}
+
 @keyframes gradient {
 0% {
   background-position: 0% 50%;

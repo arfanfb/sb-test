@@ -1,6 +1,6 @@
 .home {
   &.data {
-    &:first-child {
+    >svg {
       padding-top: 200px;
     }
   }
@@ -10,7 +10,7 @@
   flex-direction: column;
   width: 100vw;
 
-  &:first-child {
+  >svg {
     padding-top: 350px;
     transition: padding-top .5s linear;
   }
