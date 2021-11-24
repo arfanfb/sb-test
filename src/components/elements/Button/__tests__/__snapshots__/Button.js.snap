@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`src/components/button render 1`] = `
+<button
+  className=""
+  disabled={false}
+  onClick={null}
+  style={
+    Object {
+      "height": 48,
+      "width": 182,
+    }
+  }
+  type="button"
+>
+   
+</button>
+`;

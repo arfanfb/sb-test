@@ -32,8 +32,17 @@ export default function reducer(state = initialState, action) {
           ...movies.Search
         ],
         moviesMeta: {
-          totalPage: Math.round(movies.totalResults / 10),
+          totalPage: Math.ceil(movies.totalResults / 10),
           page
+        }
+      };
+    case ACTIONS.RESET:
+      return {
+        ...state,
+        moviesData: [],
+        moviesMeta: {
+          totalPage: 0,
+          page: 0
         }
       };
     default:

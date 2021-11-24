@@ -2,10 +2,6 @@ import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
 import Typography from '../Typography';
 
-jest.mock('react', () => ({
-  ...require.requireActual('react'),
-}));
-
 describe('src/components/Typography', () => {
   it('render', () => {
     const shallow = new ShallowRenderer();

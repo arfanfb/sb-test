@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import useOnScreen from '../../hooks/useOnScreen';
 import { initialState, propTypes } from './reducer';
 import Button from '../../components/elements/Button';
@@ -13,31 +13,41 @@ const Home = (props) => {
   const { actions, loading, moviesData, moviesMeta } = props;
   const refLoad = useRef();
   const onScreen = useOnScreen(refLoad, '20px');
+  const [title, setTitle] = useState('');
+  const [year, setYear] = useState('');
+  const [plot, setPlot] = useState('');
 
   useEffect(() => {
-    if (onScreen && !loading) {
-      actions.getTest(undefined, moviesMeta.page + 1);
+    return () => {
+      actions.reset();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (onScreen && !loading && title !== '' && (moviesMeta.page < moviesMeta.totalPage)) {
+      actions.getMovies(title, year, plot === 'full' && plot, moviesMeta.page + 1);
     }
   }, [onScreen]);
 
-  useEffect(() => {
-    actions.setLoading(true);
-    actions.getTest(undefined, moviesMeta.page + 1);
-  }, []);
+  const handleSearch = () => {
+    if (title !== '' || year !== '') {
+      actions.reset();
+      actions.getMovies(title, year, plot === 'full' && plot, moviesMeta.page + 1);
+    }
+  };
 
   const renderSearch = () => {
     return (
       <>
         <span className={styles.search}>
           <Typography variant="body">Search by:</Typography>
-          <Textfield class-name={styles['textfield']} onChange={() => { }}
+          <Textfield class-name={styles['textfield']} input={{ value: title }}
+            onChange={(e) => { setTitle(e.target.value); }}
             placeholder="Movie title" width="300" />
-          <Textfield class-name={styles['textfield']} onChange={() => { }}
-            placeholder="Movie year" />
-          {/* <ButtonIcon class-name={styles['search-icon']} heightIcon={21}
-            icon={Search} onClick={() => { }} widthIcon={21} /> */}
-          <Select onChange={() => { }} placeholder="Plot">
-            <option value="">Short</option>
+          <Textfield class-name={styles['textfield']} onChange={(e) => { setYear(e.target.value); }}
+            placeholder="Movie year" value={year} />
+          <Select onChange={(value) => { setPlot(value); }} placeholder="Plot">
+            <option value="short">Short</option>
             <option value="full">Full</option>
           </Select>
         </span>
@@ -51,7 +61,8 @@ const Home = (props) => {
         {
           moviesData.length > 0 && (
             moviesData.map((item, index) => (
-              <CardMovies image={item.Poster} imdb={item.imdbID} key={index}
+              <CardMovies enlarge image={item.Poster}
+                key={index} link={item.imdbID}
                 title={item.Title} year={item.Year} />
             ))
           )
@@ -73,8 +84,7 @@ const Home = (props) => {
       <Logo height={100} width={170} />
       {renderSearch()}
       <div className={styles.buttons}>
-        <Button variant="outline">Search</Button>
-        <Button variant="outline">Reset</Button>
+        <Button onClick={handleSearch} variant="outline">Search</Button>
       </div>
       {renderList()}
       <div>

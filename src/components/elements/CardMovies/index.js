@@ -1,19 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
+import useOnClickOutside from '../../../hooks/useOnClickOutside';
 import PropTypes from 'prop-types';
 import Typography from '../Typography';
 import styles from './CardMovies.module.scss';
 
 export default function CardMovies(props) {
-  const { 'class-name': classNameProps, 'external-url': externalUrl, title, image, link,
+  const { enlarge, 'class-name': classNameProps, title,
+    info, image, link,
     loading, year } = props;
-  const [windows, setWindow] = useState(undefined);
+  const ref = useRef();
+  const [large, setLarge] = useState(false);
 
-  useEffect(() => {
-    setWindow(window);
-  },[]);
+  useOnClickOutside(ref, () => setLarge(false));
 
-  const getLink = () => {
-    return !externalUrl ? windows.location.origin + '/' + link : link;
+  const getLargeSrc = (image) => {
+    return image.split('@._V1_')[0] + '@._V1_SX800.jpg';
   };
 
   const getTitle = () => {
@@ -22,6 +24,10 @@ export default function CardMovies(props) {
     }
 
     return loading ? '' : 'Untitled';
+  };
+
+  const handleClick = () => {
+    setLarge(!large);
   };
 
   const renderInfo = () => (
@@ -37,23 +43,31 @@ export default function CardMovies(props) {
   );
 
   return (
-    <a href={(link && windows) ? getLink() : ''}>
+    <>
       <div className={[styles.card, styles.movies, classNameProps,
-        (title || loading) && styles.info,
-        loading && styles.loading].join(' ')}>
-        {image ? (<img loading="lazy" src={image}/>) : (
+        ((title || loading) && info) && styles.info,
+        loading && styles.loading].join(' ')} ref={ref}>
+        {image ? (
+          <div className={styles.image}>
+            <img className={styles.cover} src={image}/>
+            { enlarge && (<img className={[styles.thumb, large && styles.large].join(' ')}
+              onClick={handleClick} src={getLargeSrc(image)}/>) }
+          </div>) : (
           <span className={styles.default} />
         )}
-        {(title || year || loading) && renderInfo()}
+        <Link to={(link) ? `/movie/${link}` : ''}>
+          {((title || year || loading) && info) && renderInfo()}
+        </Link>
       </div>
-    </a>
+    </>
   );
 }
 
 CardMovies.defaultProps = {
   'class-name': undefined,
-  'external-url': false,
+  enlarge: false,
   image: undefined,
+  info: true,
   link: undefined,
   loading: false,
   title: null,
@@ -62,8 +76,9 @@ CardMovies.defaultProps = {
 
 CardMovies.propTypes = {
   'class-name': PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  'external-url': PropTypes.bool,
+  enlarge: PropTypes.bool,
   image: PropTypes.string,
+  info: PropTypes.bool,
   link: PropTypes.string,
   loading: PropTypes.bool,
   title: PropTypes.string,

@@ -12,6 +12,7 @@ const Suspensed = (Element) => function suspense(props) {
 
 const pages = {
   Home: Suspensed(lazy(() => import('./Home'))),
+  Movie: Suspensed(lazy(() => import('./Movie'))),
   NotFound: Suspensed(lazy(() => import('./NotFound'))),
 };
 

@@ -11,6 +11,7 @@ const App = ({ store, history }) => {
     <Provider store={store}>
       <Routes history={history}>
         <Route exact index path="/" element={pages.Home()} />
+        <Route exact path="/movie/:id" element={pages.Movie()} />
         <Route exact path="notfound" element={pages.NotFound()} />
         <Route path='*' element={pages.NotFound()} />
       </Routes>

@@ -5,7 +5,8 @@ import fetch from '../../utils/fetch';
 export function reset() {
   return dispatch => {
     dispatch({
-      type: ACTIONS.RESET,
+      type: ACTIONS.MOVIE_FETCHED,
+      movie: { }
     });
   };
 }
@@ -19,7 +20,7 @@ export function setLoading(loading = false) {
   };
 }
 
-export function getMovies(s, y, plot, page = 1) {
+export function getMovie(i, plot) {
   return dispatch => {
     dispatch({
       type: ACTIONS.LOADING,
@@ -28,15 +29,10 @@ export function getMovies(s, y, plot, page = 1) {
 
     let params = {
       apikey: API_KEY,
-      page
     };
 
-    if (s !== '') {
-      params.s = s;
-    }
-
-    if (y !== '') {
-      params.y = y;
+    if (i !== '') {
+      params.i = i;
     }
 
     if (plot) {
@@ -51,15 +47,15 @@ export function getMovies(s, y, plot, page = 1) {
 
     fetch(options)
       .then((res) => {
-        dispatch({
-          type: ACTIONS.MOVIES_FETCHED,
-          movies: res.data,
-          page
-        });
 
         dispatch({
           type: ACTIONS.LOADING,
           loading: false,
+        });
+
+        dispatch({
+          type: ACTIONS.MOVIE_FETCHED,
+          movie: res.data
         });
       })
       .catch(() => {

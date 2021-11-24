@@ -39,6 +39,33 @@
     }
   }
 
+  .image {
+    position: relative;
+
+    img {
+      width: 100%;
+    }
+
+    .thumb {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+    }
+
+    .large {
+      height: 800px;
+      position: fixed;
+      max-height: 800px;
+      right: 50%;
+      top: 50%;
+      transform: translate(35vw, -50%);
+      transition: 0.5s all;
+      width: 500px;
+      z-index: 3;
+    }
+  }
+
   .default {
     align-items: center;
     background-color: #545454;

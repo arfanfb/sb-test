@@ -2,10 +2,6 @@ import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
 import CardMovies from '../index';
 
-jest.mock('react', () => ({
-  ...require.requireActual('react'),
-}));
-
 describe('src/components/elements/CardMovies', () => {
   it('render', () => {
     const shallow = new ShallowRenderer();
@@ -15,7 +11,7 @@ describe('src/components/elements/CardMovies', () => {
 
   it('render with props', () => {
     const shallow = new ShallowRenderer();
-    const tree = shallow.render(<CardMovies title="Judul Game" year="4" />);
+    const tree = shallow.render(<CardMovies title="Judul Movie" year="4" />);
     expect(tree).toMatchSnapshot();
   });
 
@@ -25,7 +21,7 @@ describe('src/components/elements/CardMovies', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('render without joystick', () => {
+  it('render without year', () => {
     const shallow = new ShallowRenderer();
     const tree = shallow.render(<CardMovies title="4" />);
     expect(tree).toMatchSnapshot();
