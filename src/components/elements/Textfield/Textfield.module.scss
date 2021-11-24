@@ -1,0 +1,20 @@
+@import '../../../styles/colors.scss';
+
+.textfield {
+  align-items: center;
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  box-sizing: border-box;
+  display: flex;
+  font-size: 16px;
+  height: 55px;
+  justify-content: space-between;
+  line-height: 24px;
+  min-width: 200px;
+  padding: 0 15px;
+
+  &:focus {
+    outline-color: map-get($primary, normal);
+  }
+}

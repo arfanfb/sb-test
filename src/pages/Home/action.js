@@ -13,6 +13,11 @@ export function setLoading(loading = false) {
 
 export function getTest(s = 'Batman', page = 1) {
   return dispatch => {
+    dispatch({
+      type: ACTIONS.LOADING,
+      loading: true,
+    });
+
     const options = {
       method: 'GET',
       params: {
@@ -28,6 +33,12 @@ export function getTest(s = 'Batman', page = 1) {
         dispatch({
           type: ACTIONS.MOVIES_FETCHED,
           movies: res.data,
+          page
+        });
+
+        dispatch({
+          type: ACTIONS.LOADING,
+          loading: false,
         });
       })
       .catch(() => { });

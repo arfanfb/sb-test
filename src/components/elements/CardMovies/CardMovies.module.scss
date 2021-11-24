@@ -1,0 +1,132 @@
+.card.movies {
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0px 2px 2px rgba(66, 66, 66, 0.2),
+    0px 0px 4px rgba(66, 66, 66, 0.2);
+  cursor: pointer;
+  width: 255px;
+
+  p {
+    margin: 0;
+  }
+
+  &.loading {
+    .title {
+      animation: gradient 1s ease infinite;
+      background: linear-gradient(-45deg, #949494, rgba(196, 196, 196, 0));
+      background-size: 400% 400%;
+      border-radius: 100px;
+      display: block;
+      height: 14px;
+      margin-top: 5px;
+    }
+
+    .default {
+      animation: gradient 1s ease infinite;
+      background: linear-gradient(-45deg, #949494, rgba(196, 196, 196, 0));
+      background-size: 400% 400%;
+    }
+
+    .year {
+      animation: gradient 1s ease infinite;
+      background: linear-gradient(-45deg, #949494, rgba(196, 196, 196, 0));
+      background-size: 400% 400%;
+      border-radius: 100px;
+      display: block;
+      height: 14px;
+      margin-top: 5px;
+      width: 100px;
+    }
+  }
+
+  .default {
+    align-items: center;
+    background-color: #545454;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    display: flex;
+    height: 357px;
+    justify-content: center;
+
+    img {
+      padding-left: 35px;
+    }
+  }
+
+  img {
+    border-radius: 16px;
+    max-height: 357px;
+    width: inherit;
+  }
+
+  &.info {
+    min-height: 429px;
+
+    img {
+      border-bottom-left-radius: 0%;
+      border-bottom-right-radius: 0%;
+    }
+
+    section {
+      padding: 0 11px;
+
+      div {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+
+        svg {
+          margin-right: 5px;
+        }
+
+        span {
+          &:first-child {
+            display: flex;
+          }
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    height: 250px;
+    width: 190px;
+
+    img {
+      max-height: 250px;
+    }
+
+    &.info {
+      min-height: 340px;
+      height: 340px;
+
+      .icon {
+        text-align: right;
+      }
+    }
+  }
+}
+
+@keyframes loading-animation {
+  0% {
+    background-position: -100px;
+  }
+  40%,
+  100% {
+    background-position: 350px;
+  }
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
